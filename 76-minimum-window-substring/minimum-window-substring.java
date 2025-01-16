@@ -1,35 +1,29 @@
 class Solution {
-    public String minWindow(String s, String t) {
-        if (s == null || t == null || s.length() == 0 || t.length() == 0 ||
-                s.length() < t.length()) {
-            return new String();
-        }
-        int[] map = new int[128];
-        int count = t.length();
-        int start = 0, end = 0, minLen = Integer.MAX_VALUE, startIndex = 0;
-        /// UPVOTE !
-        for (char c : t.toCharArray()) {
-            map[c]++;
-        }
-
-        char[] chS = s.toCharArray();
-
-        while (end < chS.length) {
-            if (map[chS[end++]]-- > 0) {
-                count--;
+    public String minWindow(String a, String b) {
+       int ascii[]=new int[128];
+       for(char ch:b.toCharArray()){
+        ascii[ch]++;
+       } 
+       int counter=b.length();
+       int start=0;
+       int minstart=0;
+       int minlen=Integer.MAX_VALUE;
+       for(int  i=0;i<a.length();i++){
+        char ch=a.charAt(i);
+        if(ascii[ch]>0){
+            counter--;
+        }ascii[ch]--;
+        while(counter==0){
+            if(minlen > i-start+1){
+                minlen=i-start+1;
+                minstart=start;
             }
-            while (count == 0) {
-                if (end - start < minLen) {
-                    startIndex = start;
-                    minLen = end - start;
-                }
-                if (map[chS[start++]]++ == 0) {
-                    count++;
-                }
-            }
+            char front=a.charAt(start);
+            ascii[front]++;
+            if(ascii[front]>0){
+                counter++;
+            }start++;
         }
-
-        return minLen == Integer.MAX_VALUE ? new String() :
-                new String(chS, startIndex, minLen);
+         }  return minlen==Integer.MAX_VALUE?"":a.substring(minstart,minstart+minlen);
     }
 }
