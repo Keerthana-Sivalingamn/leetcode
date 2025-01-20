@@ -1,21 +1,21 @@
 class Solution {
 public:
     string removeOuterParentheses(string s) {
-        // optimal - using depth(virtual stack types) - O(n) , O(1)
-        string result; // answer without outermost parantheses
-        int depth=0;   // helps segregate primitive decomposition
+    
+        string result; 
+        int depth=0;  
         for(auto ch: s)
         {
-            if(ch=='(') // opening paranthesis
+            if(ch=='(')
             {
-                if(depth > 0) result += ch; //only add to result if it isn't outermost
-                depth++;      //signify going inside 
+                if(depth > 0) result += ch; 
+                depth++;     
             }
 
-            else if(ch==')')    //closing paranthesis
+            else if(ch==')')    
             {
-                depth--;    //first decrement the depth counter
-                if(depth > 0) result += ch; //add to result only if not outermost paranthesis
+                depth--;   
+                if(depth > 0) result += ch; 
             }
         }
         return result;
