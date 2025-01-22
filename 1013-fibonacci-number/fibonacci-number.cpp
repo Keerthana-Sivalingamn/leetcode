@@ -1,20 +1,24 @@
 class Solution {
 public:
-    int fib(int n) {
-        int f1=0;
-        int f2=1;
-        int i,s=0;
+    int fibno(int n,vector<int>db) {
         if(n==0)
           return 0;
         if(n==1)
           return 1;
+        db[0]=0;
+        db[1]=1;
+        int i,s=0;
         for(i=2;i<=n;i++)
         {
-            s=f1+f2;
-            f1=f2;
-            f2=s;
+            db[i]=db[i-1]+db[i-2];
         }
-        return s;
+        return db[n];
         
+    }
+    int fib(int n)
+    {
+        vector<int> db(n+1,-1);
+        return fibno(n,db);
+
     }
 };
