@@ -3,7 +3,7 @@ public:
     int sol(int i,int j,int m,int n,vector<vector<int>>&db)
     {
         if(i>=m || j>=n) return 0;
-        if(i==(m-1) || j==(n-1)) return 1;
+        if(i==(m-1) && j==(n-1)) return 1;
         if(db[i][j]!=-1) return db[i][j];
         else
         {
