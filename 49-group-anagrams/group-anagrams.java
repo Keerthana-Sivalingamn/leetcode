@@ -8,7 +8,7 @@ class Solution {
             String str;
             char[] c=strs[i].toCharArray();
             Arrays.sort(c);
-            str=new String(c);
+            str=Arrays.toString(c);
             if(!map.containsKey(str))
             {
                 ArrayList<String> l=new ArrayList<>();
