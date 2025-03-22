@@ -18,8 +18,6 @@ class Solution {
             s=s+(long)nums[i];
             if(s>0)
               c++;
-            else
-              s=0;
         }
         return c;
         
